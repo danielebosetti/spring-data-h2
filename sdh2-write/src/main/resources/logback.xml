@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>logs/test.log</file>
+        <append>false</append>
+        <encoder><pattern>
+        %d{hh:MM:ss} %-5level [%t] %logger{10} - %msg%n%throwable
+        </pattern></encoder>
+    </appender>
+    
+  <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>
+        %d{hh:MM:ss} %-5level [%t] %logger{10} - %msg%n%throwable
+      </Pattern>
+    </layout>
+  </appender>
+  
+  <logger name="some-logger" level="trace" additivity="false">
+    <appender-ref ref="Console" />
+  </logger>
+
+  <root level="info">
+    <appender-ref ref="file" />
+    <appender-ref ref="Console" />
+  </root>
+
+</configuration>
